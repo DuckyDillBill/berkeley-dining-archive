@@ -4,6 +4,9 @@ on:
   schedule:
     # 13:23 UTC = 5:23 AM Pacific (6:23 AM during daylight time), before breakfast service.
     - cron: "23 13 * * *"
+    # Backup run at 9:43 AM Pacific in case GitHub delays or skips the first one.
+    # If the morning run already committed, this one finds nothing new and exits.
+    - cron: "43 17 * * *"
   workflow_dispatch: # lets you run it by hand from the Actions tab
 
 permissions:
