@@ -1,0 +1,40 @@
+<EatecExchange>
+	<menu id="343" name="XRDS Fall 26 Breakfast 08/25/2026 - 12/19/2026" servedate="20261117" location="Crossroads" mealperiodname="Fall - Breakfast" menubulletin="" mealendtime="10:00" mealstarttime="07:00">
+		<nutrients>Calories (kcal)|Total Lipid/Fat (g)|Saturated fatty acid (g)|Trans Fat (g)|Cholesterol (mg)|Sodium (mg)|Carbohydrate (g)|Total Dietary Fiber (g)|Sugar (g)|Protein (g)|Vitamin A (iu)|Vitamin C (mg)|Calcium (mg)|Iron (mg)|Water (g)|Ash (g)|Vitamin A (rae)|Potassium (mg)|Vitamin D(iu)|Carbon Footprint (kg CO2)|</nutrients>
+		<recipes>
+			<recipe id="556" category="Center Plate" description="Scramble Eggs" shortName="Scrambled Eggs" servingSize="3.93" servingSizeUnit="oz" alternatedescription="N/A" servingDescription="1 SV" servingsPerContainer="1" approvedNutrition="Yes" showIngredients="Yes" localItems="No" itemDailyComment="" nutrients="184.98|12.88|3.75|0|405.61|167.04|2.32|0|0|13.92|0|0|69.53|1.85|0|0|0|150.65|0|0.4|">
+				<allergens>
+					<allergen id="Milk">No</allergen>
+					<allergen id="Egg">Yes</allergen>
+					<allergen id="Pork">No</allergen>
+				</allergens>
+				<dietaryChoices>
+					<dietaryChoice id="Vegan Option">No</dietaryChoice>
+					<dietaryChoice id="Vegetarian Option">Yes</dietaryChoice>
+					<dietaryChoice id="Halal">No</dietaryChoice>
+					<dietaryChoice id="Kosher">No</dietaryChoice>
+				</dietaryChoices>
+				<ingredients>
+					<![CDATA[ Egg Liquid (Cage Free Whole Eggs, Citric Acid);Oil Cooking Blend;Spice Salt Kosher; ]]>
+				</ingredients>
+			</recipe>
+		</recipes>
+	</menu>
+	<menu id="355" name="XRDS Fall 26 Lunch 08/25/2026 - 12/19/2026" servedate="20261117" location="Crossroads" mealperiodname="Fall - Lunch" menubulletin="" mealendtime="16:00" mealstarttime="11:00">
+		<nutrients>Calories (kcal)|Total Lipid/Fat (g)|Saturated fatty acid (g)|Trans Fat (g)|Cholesterol (mg)|Sodium (mg)|Carbohydrate (g)|Total Dietary Fiber (g)|Sugar (g)|Protein (g)|Vitamin A (iu)|Vitamin C (mg)|Calcium (mg)|Iron (mg)|Water (g)|Ash (g)|Vitamin A (rae)|Potassium (mg)|Vitamin D(iu)|Carbon Footprint (kg CO2)|</nutrients>
+		<recipes>
+			<recipe id="1843" category="Centerplate" description="Chicken Breast Chipotle HALAL AF" shortName="Halal Chipotle Chicken Breast" servingSize="4.11" servingSizeUnit="oz" alternatedescription="N/A" servingDescription="1 SV" servingsPerContainer="1" approvedNutrition="Yes" showIngredients="Yes" localItems="No" itemDailyComment="" nutrients="160.57|5.62|0.92|0.01|81.65|74.09|0.51|0.17|0|25.17|10.07|0|5.59|0.42|80.37|0|0|373.59|0|0.06|">
+				<allergens>
+					<allergen id="Milk">No</allergen>
+					<allergen id="Pork">No</allergen>
+				</allergens>
+				<dietaryChoices>
+					<dietaryChoice id="Halal">Yes</dietaryChoice>
+				</dietaryChoices>
+				<ingredients>
+					<![CDATA[ Chicken Breast B/S Raw HALAL;Chipotle Pepper in Adobo Sauce HALAL; ]]>
+				</ingredients>
+			</recipe>
+		</recipes>
+	</menu>
+</EatecExchange>

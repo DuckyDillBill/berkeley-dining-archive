@@ -1,0 +1,51 @@
+name: Archive today's menus
+
+on:
+  schedule:
+    # 13:23 UTC = 5:23 AM Pacific (6:23 AM during daylight time), before breakfast service.
+    - cron: "23 13 * * *"
+  workflow_dispatch: # lets you run it by hand from the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: archive
+  cancel-in-progress: false
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run tests
+        run: |
+          pip install --quiet pytest
+          python -m pytest -q tests
+
+      - name: Download and parse today's menus
+        run: python scraper/archive.py
+
+      - name: Commit the new data
+        env:
+          # Commits are authored as Dylan so they show on his contribution graph.
+          GIT_AUTHOR_NAME: Dylan Brown
+          GIT_AUTHOR_EMAIL: 171443719+DuckyDillBill@users.noreply.github.com
+          GIT_COMMITTER_NAME: Dylan Brown
+          GIT_COMMITTER_EMAIL: 171443719+DuckyDillBill@users.noreply.github.com
+        run: |
+          git add data
+          if git diff --cached --quiet; then
+            echo "Nothing new to commit."
+            exit 0
+          fi
+          TODAY=$(TZ=America/Los_Angeles date +%Y-%m-%d)
+          SUMMARY=$(tail -n 1 data/daily_log.csv | cut -d, -f2,4 | awk -F, '{print $1" locations, "$2" unique items"}')
+          git commit -m "Archive menus for $TODAY ($SUMMARY)"
+          git push
