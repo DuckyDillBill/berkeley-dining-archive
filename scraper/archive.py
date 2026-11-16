@@ -151,11 +151,23 @@ def parse(xml_bytes: bytes) -> list[dict]:
     return rows
 
 
+# Some items are published with whole-batch nutrition (e.g. a 241 oz "serving"
+# of chicken salad). Keep them in the menu CSVs as published, but leave them
+# out of the daily summary so one bad entry doesn't skew it.
+MAX_PLAUSIBLE_SERVING_OZ = 32
+
+
+def plausible(row: dict) -> bool:
+    size = row["serving_size"]
+    return not (row["serving_unit"] == "oz" and isinstance(size, float) and size > MAX_PLAUSIBLE_SERVING_OZ)
+
+
 def update_log(log_path: Path, date: str, rows: list[dict], locations: list[str]) -> None:
     """Append (or replace) one summary line per day in data/daily_log.csv."""
     iso = f"{date[:4]}-{date[4:6]}-{date[6:]}"
-    cals = [r["calories_kcal"] for r in rows if isinstance(r["calories_kcal"], float)]
-    top = max((r for r in rows if isinstance(r["protein_g"], float)),
+    good = [r for r in rows if plausible(r)]
+    cals = [r["calories_kcal"] for r in good if isinstance(r["calories_kcal"], float)]
+    top = max((r for r in good if isinstance(r["protein_g"], float)),
               key=lambda r: r["protein_g"], default=None)
     entry = {
         "date": iso,

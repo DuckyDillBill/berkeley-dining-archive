@@ -53,6 +53,7 @@ python -m pytest -q tests                       # parser tests (offline)
 ## Notes
 
 - Menu and nutrition data belongs to Cal Dining (UC Berkeley). Their disclaimer applies: values are estimates and can change because of sourcing, portion size and preparation. Don't rely on them for allergies; ask the dining staff or the Cal Dining dietitian.
+- A few items are published with whole-batch nutrition, for example a 241 oz "serving" of chicken salad. The menu CSVs keep them exactly as Cal Dining published them. The daily summary skips any serving over 32 oz, so filter those out in your own analysis too.
 - On days when dining halls are closed, such as breaks and holidays, the log records "no menus published."
 - This is a student project and isn't affiliated with Cal Dining.
 

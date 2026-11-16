@@ -2,7 +2,7 @@ from pathlib import Path
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scraper"))
-from archive import FIELDS, parse  # noqa: E402
+from archive import FIELDS, parse, plausible  # noqa: E402
 
 FIXTURE = Path(__file__).parent / "fixtures" / "Crossroads_20261117.xml"
 
@@ -21,3 +21,9 @@ def test_parse_fixture():
     assert chicken["is_halal"] == 1
     assert chicken["protein_g"] == 25.17
     assert chicken["ingredients"].startswith("Chicken Breast")
+
+
+def test_batch_sized_servings_are_flagged():
+    rows = parse(FIXTURE.read_bytes())
+    assert all(plausible(r) for r in rows)
+    assert not plausible({**rows[0], "serving_size": 241.52})
